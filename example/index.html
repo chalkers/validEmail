@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>validEmail Example</title>
+	<style type="text/css">
+		.error {
+			color:red;
+			border:5px solid red;
+		}
+		.valid {
+			color:green;
+			border:5px solid green;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Invalid</h1>
+
+<p>
+	<input type="text" value="andrew@chalkley">
+</p>
+
+<p>
+	<input type="text" value="andrewchalkley.org">
+</p>
+
+<p>
+	<textarea>andrew@chalkley</textarea>
+</p>
+
+<p>
+	<textarea>andrewchalkley.org</textarea>
+</p>
+
+<h1>Valid</h1>
+
+<p>
+	<input type="text" value="andrew@chalkley.org">
+</p>
+
+<p>
+	<input type="text" value="andrew@chalkley.co.uk">
+</p>
+
+<p>
+	<input type="text" value="andrew@chalkley.com">
+</p>
+
+<p>
+	<textarea>andrew@chalkley.org</textarea>
+</p>
+
+<p>
+	<textarea>andrew@chalkley.co.uk</textarea>
+</p>
+
+<p>
+	<textarea>andrew@chalkley.com</textarea>
+</p>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="../validEmail.js"></script>
+<script type="text/javascript">
+	$("input,textarea").each(function(){
+		$(this).after("<span>"+$(this).validEmail()+"</span>");
+	});
+
+	$("input").validEmail({on:"focus", success:function(){
+		$(this).removeClass("error").addClass("valid");
+	}, failure:function(){
+		$(this).removeClass("valid").addClass("error");
+	}});
+
+
+	$("textarea").validEmail({on:"keyup", success:function(){
+			$(this).removeClass("error").addClass("valid");
+		}, failure:function(){
+			$(this).removeClass("valid").addClass("error");
+		}, 
+		testInitially: true
+	});
+</script>
+</body>
+</html>
