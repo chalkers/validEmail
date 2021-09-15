@@ -10,7 +10,7 @@
 
   	function check($input) {
   		if($input.is("input,textarea")) {
-  			var emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  			var emailRegExp = /^[A-Z0-9ก-๛._%+\-]+@[A-Z0-9ก-๛.\-]+\.[A-Zก-๛]{2,}$/i;
   			return emailRegExp.test($input.val());
   		} else {
   			return false;
